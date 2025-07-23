@@ -1,0 +1,41 @@
+<!--ブログページ画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ブログ編集</title>
+<style>
+	body {
+		max-width:1000px;
+		margin:auto;
+	}
+	
+	.back{
+		border-top:80px;
+	}
+</style>
+</head>
+<body>
+<h1>ブログ編集</h1>
+	<form th:action="@{/edit}" method="post" th:object="${blog}">
+		<input type="hidden" th:field="*{posts_id}">
+		<input type="hidden" th:field="*{user_id}">
+ 		<table border="1">
+			<tr>
+				<th>ブログのタイトル</th>
+				<td>
+					<input style="width:300px" type="text" th:field="*{title}"></input>
+				</td>
+			</tr>
+			<tr>
+				<th>ブログの説明文</th>
+				<td><textarea style="width:300px; height:100px;" th:field="*{contents}"></textarea></td>
+			</tr>
+		</table>
+		<input type="submit" value="修正登録">
+	</form>
+	<form class="back" th:action="@{/return3}" method="get">
+		<input type="submit" value="戻る">
+	</form>
+</body>
+</html>

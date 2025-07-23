@@ -1,0 +1,26 @@
+<!--新規ユーザー登録画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規ユーザー登録</title>
+<style>
+	body {
+		max-width:1000px;
+		margin:auto;
+	}
+</style>
+</head>
+<body>
+<h1>新規ユーザー登録</h1>
+<form action="create1" method="post">
+	ユーザーID：<input type="text" name="user_id"><br>
+	パスワード：<input type="text" name="pass"><br>
+	ユーザー名：<input type="text" name="name"><br>
+	<input type="submit" value="登録">
+</form>
+<form action="return1" method="get">
+	<input type="submit" value="戻る">
+</form>
+</body>
+</html>

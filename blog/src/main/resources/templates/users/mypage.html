@@ -1,0 +1,60 @@
+<!--マイページ画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<title>マイページ</title>
+<style>
+	body {
+		max-width:1000px;
+		margin:auto;
+	}
+	
+	.logout{
+			margin-right: 80px;
+			margin-bottom: 20px;
+		}
+	
+	.edit {
+			margin-right: 80px;
+		}
+		
+	ul.no-marker > li {
+		  list-style: none !important;
+		  list-style-type: none !important;
+		  display: block !important;
+		}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	.back{
+		margin-top:80px;
+	}
+		
+</style>
+</head>
+<body>
+<h1>マイページ</h1><br>
+<form style="text-align: right;" action="logout" method="get">
+	<input class="logout" type="submit" value="ログアウト">
+</form>
+<form style="text-align: right;" action="new2" method="get">
+	<input class="edit" type="submit" value="ブログ新規登録">
+</form>
+<div >
+	<h2>Myblog</h2>
+	<ul class="no-marker">
+	<li th:each="blog:${blogs}">
+		<a th:href="@{'/blog1/' + ${blog.posts_id}}" th:text="${blog.title}"></a>
+	</li>
+	</ul>
+</div>
+<form class="back" action="return2" method="get">
+	<input type="submit" value="戻る">	
+</form>
+<span style="color: red;" th:text="${errorMasssege}"></span>
+</body>
+</html>

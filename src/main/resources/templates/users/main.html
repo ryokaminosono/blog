@@ -1,0 +1,51 @@
+<!--メイン画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メインページ</title>
+<style>
+	body {
+			max-width:1000px;
+			margin:auto;
+		}
+		
+.logout {
+			margin-right:80px;
+			margin-bottom: 40px;
+		}
+
+	ul.no-marker > li {
+		  list-style: none !important;
+		  list-style-type: none !important;
+		  display: block !important;
+		}
+	a   {
+		text-decoration: none;
+	}
+
+</style>
+</head>
+<body>
+<h1>ブログ</h1><br>
+ログインユーザー：<span th:text="${userid}"></span>
+<span style="color: red;" th:text="${errorMessage}" ></span>
+<form style="text-align: right;" action="logout" method="get">
+	<input class="logout" type="submit" value="ログアウト">
+</form>
+<p>ソート順：
+  <a th:href="@{/sort(sort='new')}" >新着順</a> |
+  <a th:href="@{/sort(sort='like')}" >いいね順</a> |
+</p>
+
+<ul class="no-marker">
+	<li th:each="blog:${blogs}">
+		<a th:href="@{'/blog/' + ${blog.posts_id}}" th:text="${blog.title}"></a>
+	</li>
+</ul>
+<br>
+<form action="mypage" method="get">
+	<input type="submit" value="MyPage">
+</form>
+</body>
+</html>

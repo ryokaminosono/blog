@@ -1,0 +1,66 @@
+<!--ブログページ画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ブログ</title>
+<style>
+		body {
+			max-width:1000px;
+			margin:auto;
+		}
+		
+		.back{
+			margin-top:80px;
+		}
+		
+		.like{
+			margin-top:10px;
+		}
+		
+		ul.no-marker > li {
+			  list-style: none !important;
+			  list-style-type: none !important;
+			  display: block !important;
+		}
+		
+		a {
+				text-decoration: none;
+		}
+			
+</style>
+</head>
+<body>
+<h1>ブログページ</h1><br>
+<div th:text="${blog.title}"></div>
+<div th:text="${blog.contents}"></div>
+<div class="like">
+	<form th:action="@{/likeup}" method="post">
+		<input type="hidden" name="posts_id" th:value="${blog.posts_id}">
+		<button type="submit">いいね</button>
+		<span style="border: 1px solid black" th:text="${likecount}"></span>
+	</form>
+	
+</div>
+<div>
+	<h3>コメント</h3>
+</div>
+<div>
+	<ul class="no-marker">
+		<li th:each="comment:${comments}">
+			<span th:text="${comment.comments}"></span>
+		</li>
+	</ul>
+</div>
+<div>
+	<form th:action="@{/commentAdd}" method="post">
+		<input type="hidden" name="posts_id" th:value="${blog.posts_id}">
+		<textarea style="width:300px; height:20px;" name="comments"></textarea>
+		<input type="submit" value="登録">
+	</form>
+</div>
+<form class="back" th:action="@{/return4}"  method="get">
+	<input type="submit" value="戻る">
+</form>
+</body>
+</html>

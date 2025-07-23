@@ -1,0 +1,27 @@
+<!--ログイン画面-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログインページ</title>
+<style>
+	body {
+		max-width:1000px;
+		margin:auto;
+	}
+</style>
+</head>
+<body>
+<h1>ログイン</h1>
+<table border="1">
+<form action="main1" method="post" th:object="${M_User}">
+	ログインID：<input type="text" name="ID"><br>
+	パスワード：<input type="password" name="PASS"><br>
+	<input type="submit" value="ログイン">
+</form><br>
+<form action="new1" method="get">
+	<input type="submit" value="新規登録">
+</form><br>
+<span style="color: red;" th:text="${errorMasssege}" ></span>
+</body>
+</html>
